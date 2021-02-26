@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Cateogoría</h3>
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-subtitle mb-2 text-muted">update</h4>
+                            <a href="{{ path('categories_index') }}"><span class="p-2 glyphicon glyphicon-list"></span>Back
+                                to the list</a>
+                            <div class="p-2">
+                                {{ form_start(delete_form, {'action': path('categories_delete',{'id':category.id})}) }}
+                                <input type="submit" value="Delete">
+                                {{ form_end(delete_form) }}
+                            </div>
+                        </div>
+
+                        <div class="card-text">
+                            {{ form_start(edit_form, {'action': path('categories_edit',{'id':category.id}), 'method': 'POST'}) }}
+                            <div class="border border-white row">
+                                <label for="name"
+                                       class="col-4 col-form-label">{{ form_label(edit_form.name) }}</label>
+                                <div class="col-8">
+                                    {{ form_widget(edit_form.name) }}
+                                </div>
+                            </div>
+
+                            <div class="d-flex ">
+                                <div class="p-2">
+                                    {{ form_widget(edit_form.save) }}
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_end(edit_form) }}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

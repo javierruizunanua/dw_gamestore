@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-8 mx-auto">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Categoría</h3>
+                        <h4 class="card-subtitle mb-2 text-muted">Añade una nueva</h4>
+                        <div class="card-text">
+                            {{ form_start(form) }}
+                            <div class="border border-white row">
+                                <label for="name"
+                                       class="col-4 col-form-label">{{ form_label(form.name) }}</label>
+                                <div class="col-8">
+                                    {{ form_widget(form.name) }}
+                                </div>
+                            </div>
+
+                            <li class="list-group-item pb-2 ml-auto border-left-0 border-right-0 border-bottom-0 ">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <div class="border border-white  row">
+                                            <div class="col-sm-4 textarea">
+                                                {{ form_widget(form.save) }}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="{{ path('games_index') }}">
+                                            <span class="p-2 glyphicon glyphicon-list"></span>Backto the list
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

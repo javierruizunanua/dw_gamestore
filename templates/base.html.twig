@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}GameStore{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset("assets/css/bootstrap.min.css") }}" />
+    {% endblock %}
+</head>
+<body>
+
+{% block body %}  {% endblock %}
+
+</body>
+<footer class="footer">
+            {% block footer %}{% endblock %}
+</footer>
+
+</html>

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <div class="card bg-light">
+                    <div class="card-header d-flex justify-content-between  bg-dark text-white">
+                        <div>
+                            <h5 class="">Categorías</h5>
+                        </div>
+                        <div>
+                            <a class="mr-0" href="{{ path('categories_new') }}">Crear nueva categoría</a>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+
+                        <ul class="list-group">
+                            {% for category in categories %}
+                                <div class="card list-group-item ">
+                                    <div class="card-body">
+                                        <ul class="list-group">
+                                            <li class="list-group-item pb-2">
+                                                <div class="lead"><h6 class="text-muted">Nombre</h6></div>
+                                                <div class="lead">{{ category.name }}</div >
+                                            </li>
+                                            
+                                            <li class="list-group-item pb-2 ml-auto border-left-0 border-right-0 border-bottom-0 ">
+                                                <ul class="list-inline">
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-outline-info" href="{{ path('categories_edit', { 'id': category.id }) }}">
+                                                            <span class="fa fa-edit p-2"> </span>edit
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr/>
+                            {% endfor %}
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

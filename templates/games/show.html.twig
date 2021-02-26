@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <div class="card">
+                    <h5 class="card-header">Game</h5>
+                    <div class="card-body">
+
+                        <table class="table-borderless table-responsive">
+                            <tr scope="row" class="pb-2">
+                                <td><h6 class="text-muted">Portada</h6></td>
+                                <td><img class="img-fluid w-25"  src="{{ game.image }}" alt="portada" /></td>
+                            </tr>
+                            <tr scope="row" class="pb-2">
+                                <td ><h6 class="text-muted">Nombre</h6></td>
+                                <td>{{ game.name }}</td>
+                            </tr>
+                            <tr scope="row" class="pb-2">
+                                <td><h6 class="text-muted">Precio</h6></td>
+                                <td>{{ game.price }}€</td>
+                            </tr>
+                            <tr scope="row" class="pb-2">
+                                <td><h6 class="text-muted">Valoración</h6></td>
+                                <td>{{ game.rating }}</td>
+                            </tr>
+                            <tr scope="row" class="pb-2">
+                                <td><h6 class="text-muted">Descripción</h6></td>
+                                <td>{{ game.description }}</td>
+                            </tr>
+                            <tr scope="row" class="pb-2">
+                                <td><h6 class="text-muted">Año de lanzamiento</h6></td>
+                                <td>{{ game.year }}</td>
+                            </tr>
+                            <tr scope="row" class="pb-2">         
+                                <td><h6 class="text-muted">Categoría</h6></td>
+                                {% for category in categories %}
+                                    {% if game.getCategoriesId() == category %}
+                                        <td>{{ category.getName() }}</td>
+                                    {% endif %}    
+                                {% endfor %}
+                            </tr>
+                        </table>
+                    </div>
+                           
+                    <li class="list-group-item pb-2 ml-auto border-left-0 border-right-0 border-bottom-0 ">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="{{ path('games_index') }}">
+                                    <span class="p-2 glyphicon glyphicon-list"></span>Backto the list
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a  class="btn btn-outline-secondary" href="{{ path('games_edit', { 'id': game.id }) }}">Edit</a>
+                            </li>
+                            <li class="list-inline-item">
+                                {{ form_start(delete_form) }}
+                                <input   class="btn btn-outline-danger" type="submit" value="Delete">
+                                {{ form_end(delete_form) }}
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
